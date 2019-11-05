@@ -1,0 +1,20 @@
+.tree-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.tree {
+  margin-top: 50px;
+}
+
+.drag-handle {
+  &:active {
+    cursor: move;
+  }
+}
+
+mat-panel-description {
+  display: flex;
+  justify-content: flex-end;
+}
