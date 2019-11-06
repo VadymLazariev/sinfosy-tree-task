@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {OrgTree} from '../models/org-tree.model';
 import {DataTreeService} from '../../core/data-tree.service';
 import OrgTreeNode from '../models/org-tree-node.model';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {MatTreeNestedDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-tree',
@@ -10,8 +12,11 @@ import OrgTreeNode from '../models/org-tree-node.model';
 })
 
 export class TreeComponent implements OnInit {
+  organizationTreeTransformed: OrgTreeNode[];
 
-  constructor(private dataTreeService: DataTreeService) {}
+  treeControl = new NestedTreeControl<OrgTreeNode>(node => node.children);
+
+  dataSource = new MatTreeNestedDataSource<OrgTreeNode>();
 
   organizationTree: OrgTree = {
     class: 'organizationTree',
@@ -28,11 +33,13 @@ export class TreeComponent implements OnInit {
     ]
   };
 
-  organizationTreeTransformed: OrgTreeNode[];
+  constructor(private dataTreeService: DataTreeService) {}
+
+  hasChild = (_: number, node: OrgTreeNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
     this.organizationTreeTransformed = this.dataTreeService.createNestedTree(this.organizationTree.data);
+    this.dataSource.data = this.organizationTreeTransformed;
   }
-
 }
 
