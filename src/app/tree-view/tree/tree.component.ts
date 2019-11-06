@@ -12,7 +12,6 @@ import {MatTreeNestedDataSource} from '@angular/material';
 })
 
 export class TreeComponent implements OnInit {
-  organizationTreeTransformed: OrgTreeNode[];
 
   treeControl = new NestedTreeControl<OrgTreeNode>(node => node.children);
 
@@ -38,8 +37,7 @@ export class TreeComponent implements OnInit {
   hasChild = (_: number, node: OrgTreeNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
-    this.organizationTreeTransformed = this.dataTreeService.createNestedTree(this.organizationTree.data);
-    this.dataSource.data = this.organizationTreeTransformed;
+    this.dataSource.data = this.dataTreeService.createNestedTree(this.organizationTree.data);
   }
 }
 
