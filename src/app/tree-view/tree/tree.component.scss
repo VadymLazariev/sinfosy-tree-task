@@ -1,3 +1,6 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+
 .tree-container {
   height: 100%;
 }
@@ -17,3 +20,31 @@
   margin-bottom: 0;
   list-style-type: none;
 }
+
+//.mat-tree-node {
+//
+//  &.cdk-drag-preview {
+//    @include mat-elevation(12);
+//  }
+//  &.cdk-drag-placeholder {
+//    opacity: 0;
+//  }
+//}
+
+//.cdk-drop-list-dragging .mat-tree-node:not(.cdk-drag-placeholder) {
+//  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+//}
+//
+//.cdk-drag-animating {
+//  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+//}
+
+.the-draggable-content {
+  position: fixed;
+}
+
+.cdk-drop-list-receiving {
+  border: 5px solid tomato;
+}
+
+
